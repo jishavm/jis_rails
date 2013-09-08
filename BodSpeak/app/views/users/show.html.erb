@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+<p> Welcome <%= @user.firstname %> </p>
+
+<p>
+  <b>First name:</b>
+  <%= @user.firstname %>
+</p>
+
+<p>
+  <b>Last name:</b>
+  <%= @user.lastname %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @user.email %>
+</p>
+
+
+<p>
+  <b>Password digest:</b>
+  <%= @user.password_digest %>
+</p>
+
+<p>
+  <b>Posts:</b>
+
+  <% @user.messages.each do |message| %>
+      Message: <%= link_to message.content, message %><br/>
+  <% end %>
+  <%= link_to "Create new message", new_message_path %>
+</p>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>
