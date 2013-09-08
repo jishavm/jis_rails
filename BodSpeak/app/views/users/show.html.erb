@@ -18,17 +18,15 @@
 
 
 <p>
-  <b>Password digest:</b>
-  <%= @user.password_digest %>
-</p>
-
-<p>
-  <b>Posts:</b>
+  <b>Messages:</b>
+  <div class="row"></div>
 
   <% @user.messages.each do |message| %>
-      Message: <%= link_to message.content, message %><br/>
+    <%= link_to message.content[0..25], message %><br/>
+  <p> Posted <%= time_ago_in_words message.created_at %> ago  </p>
+    <br/>
   <% end %>
-  <%= link_to "Create new message", new_message_path %>
+  <%= link_to "Create new message", new_message_path( :user_id =>@user.id) %>
 </p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
